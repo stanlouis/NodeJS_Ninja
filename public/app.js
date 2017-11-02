@@ -1,35 +1,21 @@
-const events = require('events');
+const fs = require('fs');
 
-/*
-const myEmitter = new events.EventEmitter();
+// Blocking code (Synchoronous version)
+// const readMe = fs.readFileSync('./readMe.txt', 'utf8');
+//
+// fs.writeFileSync('./writeMe.txt', readMe);
 
-myEmitter.on('someEvent', (msg) => {
-	console.log(msg)
+// Non-blocking code (Asynchronously reads)
+fs.readFile('./readMe.txt', 'utf8', (err, data) => {
+	if (err) {
+		throw err;
+	}
+	fs.writeFile('writeMe.txt', data, 'utf8', err => {
+		if (err) {
+			throw err;
+		}
+		console.log('The file has been saved!');
+	});
 });
 
-myEmitter.emit('someEvent', 'The event was emmited');
-*/
-
-// es5 const util = require('util');
-// es5 util.inherits(Person, events.EventEmitter);
-// es6 use extends to inherits events.EventEmitter. no need to use util.inherits.
-
-class Person extends events.EventEmitter {
-	 constructor(name) {
-			 super();
-			 this.name = name;
-	 }
-}
-
-const james = new Person('james');
-const mary = new Person('mary');
-const ryu = new Person('ryu');
-
-const people = [james, mary, ryu];
-
-people.forEach(person => {
-	person.on('speak', mssg => console.log(`${person.name} said: ${mssg}`));
-});
-
-james.emit('speak', 'hey dudes');
-ryu.emit('speak', 'I want a curry');
+console.log('I am not blocked');

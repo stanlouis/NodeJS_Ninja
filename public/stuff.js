@@ -1,5 +1,5 @@
 /***
-Method 1
+ Method 1
 ***/
 // const counter = arr => `There are ${arr.length} elements in this array`;
 //
@@ -12,7 +12,7 @@ Method 1
 // module.exports.pi = pi;
 
 /***
-Method 2
+ Method 2
 ***/
 // module.exports.counter = arr => `There are ${arr.length} elements in this array`;
 //
@@ -21,11 +21,12 @@ Method 2
 // module.exports.pi = Math.PI;
 
 /***
-Method 3
+ Method 3
 ***/
+
 const counter = arr => `There are ${arr.length} elements in this array`;
 
-const adder = (a, b) => `The sum of the 2 numbers is ${a+b}`;
+const adder = (a, b) => `The sum of the 2 numbers is ${a + b}`;
 
 const pi = Math.PI;
 
